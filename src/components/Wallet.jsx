@@ -31,12 +31,15 @@ const Wallet = () => {
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-8">
           Wallet Connector
         </h1>
-        <button
-          onClick={connectWallet}
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200"
-        >
-          Connect Wallet
-        </button>
+        {/* Render Connect Wallet button only if account is not set */}
+        {!account && (
+          <button
+            onClick={connectWallet}
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200"
+          >
+            Connect Wallet
+          </button>
+        )}
 
         {showBalance && account && (
           <div className="mt-6 text-center">
@@ -49,7 +52,7 @@ const Wallet = () => {
       </div>
 
       <div className="mt-8">
-        <p className="mt-8 text-center text-slate-200 text-base px-4">
+        <p className="text-center text-slate-200 text-base px-4">
           Connect your MetaMask wallet to fetch your Ethereum balance. The
           balance is retrieved directly from your wallet via MetaMask.
         </p>
